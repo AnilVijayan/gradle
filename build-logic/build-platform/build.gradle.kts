@@ -15,10 +15,16 @@ val asmVersion = "9.2"
 val kotlinVersion = providers.gradleProperty("buildKotlinVersion")
     .getOrElse(embeddedKotlinVersion)
 
+javaPlatform.allowDependencies()
+
+//configurations.forEach { it.exclude("org.codehaus.groovy.modules", "http-builder-ng-core") }
+
 dependencies {
+    api("org.gradle.guides:gradle-guides-plugin:0.23")
     constraints {
         api("com.gradle:gradle-enterprise-gradle-plugin:3.11.4") // Sync with `settings.gradle.kts`
-        api("org.gradle.guides:gradle-guides-plugin:0.20.1")
+        //api("io.github.http-builder-ng:http-builder-ng-core:1.0.4")
+        //api("org.gradle.guides:gradle-guides-plugin:0.20.1")
         api("org.apache.ant:ant:1.10.13") // Bump the version brought in transitively by gradle-guides-plugin
         api("com.gradle.publish:plugin-publish-plugin:1.0.0")
         api("gradle.plugin.org.jetbrains.gradle.plugin.idea-ext:gradle-idea-ext:1.0.1")

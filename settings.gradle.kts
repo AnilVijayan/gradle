@@ -1,7 +1,6 @@
 import org.gradle.api.internal.FeaturePreviews
 
 pluginManagement {
-    includeBuild("build-logic-settings")
     repositories {
         maven {
             url = uri("https://repo.gradle.org/gradle/enterprise-libs-release-candidates")
@@ -10,14 +9,16 @@ pluginManagement {
                 includeVersionByRegex("com.gradle", "gradle-enterprise-gradle-plugin", rcAndMilestonesPattern)
             }
         }
-        jcenter {
+        maven {
+            name = "Gradle public repository"
+            url = uri("https://repo.gradle.org/gradle/public")
             content {
                 includeModule("org.openmbee.junit", "junit-xml-parser")
-                includeModule("org.codehaus.groovy.modules", "http-builder-ng-core")
             }
         }
         gradlePluginPortal()
     }
+    includeBuild("build-logic-settings")
 }
 
 plugins {
