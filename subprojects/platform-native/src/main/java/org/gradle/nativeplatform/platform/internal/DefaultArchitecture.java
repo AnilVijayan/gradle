@@ -57,10 +57,10 @@ public class DefaultArchitecture implements ArchitectureInternal {
         return Architectures.ARM_V7.isAlias(name) || Architectures.AARCH64.isAlias(name);
     }
 
-    //@Override
-    //public boolean isPPC64le() {
-    //    return Architectures.PPC_64LE.isAlias(name);
-    //}
+    @Override
+    public boolean isPPC64le() {
+        return Architectures.PPC_64LE.isAlias(name);
+    }
 
     @Override
     public boolean equals(Object o) {

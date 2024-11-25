@@ -26,5 +26,7 @@
       $ ./gradlew :distributions-full:binDistributionZip -Dorg.gradle.java.home=/usr/lib/jvm/java-11-openjdk-amd64 --dependenc
 y-verification lenient 
 
+- Find the gradle zip at
 
+  $./subprojects/distributions-full/build/distributions/gradle-7.6.4-bin.zip
 
