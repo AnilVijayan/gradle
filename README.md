@@ -7,46 +7,23 @@
 
 **For more information, please visit the [official project homepage](https://gradle.org)**
 
-## Getting Started
+## How to configure the gradle project for ppc64le architecture
 
-* [Installing Gradle](https://docs.gradle.org/current/userguide/installation.html)
-* [Building Android Apps](https://developer.android.com/training/basics/firstapp/)
-* [Building Java Applications](https://docs.gradle.org/current/samples/sample_building_java_applications.html)
-* [Building Java Libraries](https://docs.gradle.org/current/samples/sample_building_java_libraries.html)
-* [Building Groovy Applications](https://docs.gradle.org/current/samples/sample_building_groovy_applications.html)
-* [Building Groovy Libraries](https://docs.gradle.org/current/samples/sample_building_groovy_libraries.html)
-* [Building Scala Applications](https://docs.gradle.org/current/samples/sample_building_scala_applications.html)
-* [Building Scala Libraries](https://docs.gradle.org/current/samples/sample_building_scala_libraries.html)
-* [Building Kotlin JVM Applications](https://docs.gradle.org/current/samples/sample_building_kotlin_applications.html)
-* [Building Kotlin JVM Libraries](https://docs.gradle.org/current/samples/sample_building_kotlin_libraries.html)
-* [Building C++ Applications](https://docs.gradle.org/current/samples/sample_building_cpp_applications.html)
-* [Building C++ Libraries](https://docs.gradle.org/current/samples/sample_building_cpp_libraries.html)
-* [Building Swift Applications](https://docs.gradle.org/current/samples/sample_building_swift_applications.html)
-* [Building Swift Libraries](https://docs.gradle.org/current/samples/sample_building_swift_libraries.html)
-* [Creating Build Scans](https://scans.gradle.com/)
+- Clone the gradle offical repository
 
-## Stay in Flow
-Enjoy first-class Gradle support in your IDE of choice.
+- Checkout the respective tag ( according to the release decided to create gradle zip for) from the repository
+  Ex: git checkout -b v7.6.4 tag/v7.6.4
 
-* [Android Studio](https://developer.android.com/studio/build/index.html)
-* [Eclipse](https://www.vogella.com/tutorials/EclipseGradle/article.html)
-* [IntelliJ IDEA](https://www.jetbrains.com/help/idea/gradle.html)
-* [NetBeans](https://netbeans.apache.org)
-* [Visual Studio Code](https://code.visualstudio.com/docs/languages/java)
-
-## Need Help?
-
-* Get familiar with the [Gradle User Manual](https://docs.gradle.org/current/userguide/userguide.html)
-* [Upcoming trainings](https://gradle.org/training/)
-* Ask on the [forum](https://discuss.gradle.org/) or [StackOverflow](https://stackoverflow.com/questions/tagged/gradle)
-* Have a look at the [Samples](https://docs.gradle.org/current/samples/index.html)
-* Checkout the [Community Resources](https://gradle.org/resources/) as well
-* Join our [Slack Channel](https://gradle.com/slack-invite)
+- Refer the changes made on hmc_devops_ci repo by Ashra and apply that to the current
 
 
-## Contributing
+- Create the zip of gradle using,
 
-If you're looking to contribute to Gradle or provide a patch/pull request, you can find more info [here](https://github.com/gradle/gradle/blob/master/CONTRIBUTING.md).
+  $ ./gradlew :distributions-full:binDistributionZip -Dorg.gradle.java.home=/usr/lib/jvm/java-11-openjdk-amd64 
 
-This project adheres to the [Gradle Code of Conduct](https://gradle.org/conduct/). By participating, you are expected to uphold this code.
+  NB: During the building of 7.6.4, only after enabled lenient dependency verification the build could pass as below
+      $ ./gradlew :distributions-full:binDistributionZip -Dorg.gradle.java.home=/usr/lib/jvm/java-11-openjdk-amd64 --dependenc
+y-verification lenient 
+
+
 
