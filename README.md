@@ -12,12 +12,13 @@
 - Clone the gradle offical repository
 
 - Checkout the respective tag ( according to the release decided to create gradle zip for) from the repository
-  Ex: git checkout -b v7.6.4 tag/v7.6.4
 
-- Refer the changes made on hmc_devops_ci repo by Ashra and apply that to the current
+  `Ex: git checkout -b v7.6.4 tag/v7.6.4`
 
+- Refer the changes made on hmc_devops_ci repo and apply that to the current
+  https://github.ibm.com/csnext/hmc_devops_ci/commit/92029178caf9dfd6c45c7e69a77311225e0e1f5f
 
-- Create the zip of gradle using,
+- Create the zip for the gradle using,
 
   $ ./gradlew :distributions-full:binDistributionZip -Dorg.gradle.java.home=/usr/lib/jvm/java-11-openjdk-amd64 
 
