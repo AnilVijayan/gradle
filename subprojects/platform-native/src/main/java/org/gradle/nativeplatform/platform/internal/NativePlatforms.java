@@ -46,6 +46,7 @@ public class NativePlatforms {
         ArchitectureInternal ultrasparc = Architectures.forInput("ultrasparc");
         ArchitectureInternal ppc = Architectures.forInput("ppc");
         ArchitectureInternal ppc64 = Architectures.forInput("ppc64");
+	ArchitectureInternal ppc64le = Architectures.forInput("ppc64le");
 
         platforms.add(createPlatform(windows, x86));
         platforms.add(createPlatform(windows, x64));
@@ -65,6 +66,7 @@ public class NativePlatforms {
         platforms.add(createPlatform(unix, aarch64));
         platforms.add(createPlatform(unix, ppc));
         platforms.add(createPlatform(unix, ppc64));
+	platforms.add(createPlatform(linux, ppc64le));
 
         platforms.add(createPlatform(linux, x64));
         platforms.add(createPlatform(linux, x86));

@@ -96,6 +96,7 @@ public abstract class AbstractGccCompatibleToolChain extends ExtendableToolChain
         target(new Intel32Architecture());
         target(new Intel64Architecture());
         target(new OsxArm64Architecture());
+	target(new PPC64leArchitecture());
         configInsertLocation = 0;
     }
 
@@ -318,6 +319,31 @@ public abstract class AbstractGccCompatibleToolChain extends ExtendableToolChain
                 @Override
                 public void execute(List<String> args) {
                     args.addAll(Arrays.asList(compilerArgs));
+                }
+            };
+            gccToolChain.getCppCompiler().withArguments(m64args);
+            gccToolChain.getcCompiler().withArguments(m64args);
+            gccToolChain.getObjcCompiler().withArguments(m64args);
+            gccToolChain.getObjcppCompiler().withArguments(m64args);
+            gccToolChain.getLinker().withArguments(m64args);
+            gccToolChain.getAssembler().withArguments(m64args);
+        }
+    }
+
+    private static class PPC64leArchitecture implements TargetPlatformConfiguration {
+        @Override
+        public boolean supportsPlatform(NativePlatformInternal targetPlatform) {
+            return targetPlatform.getOperatingSystem().isCurrent()
+                && targetPlatform.getArchitecture().isPPC64le();
+        }
+
+        @Override
+        public void apply(DefaultGccPlatformToolChain gccToolChain) {
+            gccToolChain.compilerProbeArgs("-m64");
+            Action<List<String>> m64args = new Action<List<String>>() {
+                @Override
+                public void execute(List<String> args) {
+                    args.add("-m64");
                 }
             };
             gccToolChain.getCppCompiler().withArguments(m64args);
